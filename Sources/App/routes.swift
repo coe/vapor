@@ -13,8 +13,7 @@ public func routes(_ router: Router) throws {
     print("hyuu string:\(string)")
     
 
-    var progress = Progress()
-    progress.totalUnitCount = 5_312_764
+    let progress = Progress(totalUnitCount: 5_312_764)
     progress.completedUnitCount = 419_240
     print("hyuu progress localizedDescription:\(String(describing: progress.localizedDescription))")
     print("hyuu progress localizedAdditionalDescription:\(String(describing: progress.localizedAdditionalDescription))")
