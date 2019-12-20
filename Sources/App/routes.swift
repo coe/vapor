@@ -15,7 +15,19 @@ public func routes(_ router: Router) throws {
     let string = NumberFormatter.localizedString(from: number, number: .spellOut)
     print("hyuu numberFormatter:\(numberFormatter.locale)")
     print("hyuu string:\(string)")
-    let url = URLCache.init()
+    
+    if #available(OSX 10.15, *) {
+        let listFormatter = ListFormatter.localizedString(byJoining: ["あ","い","う"])
+        print("hyuu listFormatter:\(listFormatter)")
+    } else {
+        // Fallback on earlier versions
+    }
+    
+    let progress = Progress(totalUnitCount: 100)
+    progress.completedUnitCount = 1
+    print("hyuu progress localizedDescription:\(progress.localizedDescription)")
+    print("hyuu progress localizedAdditionalDescription:\(progress.localizedAdditionalDescription)")
+
     
     // Basic "Hello, world!" example
     router.get("hello") { req in
