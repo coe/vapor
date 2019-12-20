@@ -22,7 +22,7 @@ public func routes(_ router: Router) throws {
     numberFormatter2.numberStyle = .none
     
     router.get { req in
-        return string
+        return String(describing: progress.localizedAdditionalDescription)
     }
 
 
