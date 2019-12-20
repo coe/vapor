@@ -4,35 +4,34 @@ import Foundation
 /// Register your application's routes here.
 public func routes(_ router: Router) throws {
     // Basic "It works" example
-    router.get { req in
-        return "It works!"
-    }
-    
     
     let numberFormatter = NumberFormatter()
     numberFormatter.numberStyle = .currency
     let number:NSNumber = 100_000_000
     let string = NumberFormatter.localizedString(from: number, number: .spellOut)
-    print("hyuu numberFormatter:\(numberFormatter.locale)")
+    print("hyuu numberFormatter:\(String(describing: numberFormatter.locale))")
     print("hyuu string:\(string)")
     
-    if #available(OSX 10.15, *) {
-        let listFormatter = ListFormatter.localizedString(byJoining: ["あ","い","う"])
-        print("hyuu listFormatter:\(listFormatter)")
-    } else {
-        // Fallback on earlier versions
-    }
-    
-    let progress = Progress(totalUnitCount: 100)
-    progress.completedUnitCount = 1
-    print("hyuu progress localizedDescription:\(progress.localizedDescription)")
-    print("hyuu progress localizedAdditionalDescription:\(progress.localizedAdditionalDescription)")
 
+    let progress = Progress()
+    progress.totalUnitCount = 5_312_764
+    progress.completedUnitCount = 419_240
+    print("hyuu progress localizedDescription:\(String(describing: progress.localizedDescription))")
+    print("hyuu progress localizedAdditionalDescription:\(String(describing: progress.localizedAdditionalDescription))")
+
+    let numberFormatter2 = NumberFormatter()
+    numberFormatter2.numberStyle = .none
+    
+    router.get { req in
+        return string
+    }
+
+
+    
     
     // Basic "Hello, world!" example
     router.get("hello") { req in
-
-        return "Hello, world!"
+        return String(describing: progress.localizedDescription)
     }
 
     // Example of configuring a controller
